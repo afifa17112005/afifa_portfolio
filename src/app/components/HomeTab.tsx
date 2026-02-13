@@ -1,3 +1,4 @@
+
 import { motion } from 'motion/react';
 import { Github, Linkedin, Mail, Download, MapPin } from 'lucide-react';
 
@@ -14,7 +15,7 @@ export function HomeTab() {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="text-6xl md:text-8xl mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent"
+        className="text-6xl md:text-8xl mb-6 bg-[linear-gradient(to_right,#E2E8F0,#93C5FD,#2563EB,#E2E8F0)] bg-clip-text text-transparent"
       >
         AFIFA A
       </motion.h1>
@@ -23,9 +24,9 @@ export function HomeTab() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.4 }}
-        className="text-2xl md:text-3xl text-gray-300 mb-4"
+        className="text-2xl md:text-3xl text-blue-300 mb-4 font-medium"
       >
-        Computer Science Student | Full Stack, Gen AI & Cloud Enthusiast
+        Driven Creator with Strong Ownership Mindset
       </motion.p>
 
       <motion.p
@@ -58,7 +59,7 @@ export function HomeTab() {
           href="mailto:aneesafifa17@gmail.com"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center gap-2"
+          className="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-full text-white flex items-center gap-2 shadow-lg shadow-blue-500/30 transition-all"
         >
           <Mail className="w-5 h-5" />
           Contact Me
@@ -70,7 +71,7 @@ export function HomeTab() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-4 border-2 border-cyan-400 rounded-full text-cyan-400 flex items-center gap-2"
+          className="px-8 py-4 border border-blue-400/50 rounded-full text-blue-300 hover:text-white hover:border-blue-400 flex items-center gap-2 transition-all"
         >
           <Download className="w-5 h-5" />
           Resume
@@ -89,7 +90,7 @@ export function HomeTab() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.2, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
-          className="text-gray-300 hover:text-white transition-colors"
+          className="text-gray-400 hover:text-white transition-colors"
         >
           <Github className="w-8 h-8" />
         </motion.a>

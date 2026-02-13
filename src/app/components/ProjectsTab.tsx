@@ -91,15 +91,15 @@ export function ProjectsTab() {
         Real-world applications combining IoT, ML, and web technologies
       </motion.p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 mb-12">
         {projects.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
-            whileHover={{ y: -10 }}
-            className="group relative backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl overflow-hidden"
+            whileHover={{ y: -10, boxShadow: "0 0 25px rgba(168, 85, 247, 0.3)" }}
+            className="group relative break-inside-avoid-column mb-6 backdrop-blur-md bg-white/5 border border-white/10 hover:border-purple-500/50 transition-colors duration-300 rounded-3xl overflow-hidden"
           >
             {/* Header with gradient */}
             <div className={`relative h-48 bg-gradient-to-br ${project.gradient} p-8 flex items-center justify-center`}>

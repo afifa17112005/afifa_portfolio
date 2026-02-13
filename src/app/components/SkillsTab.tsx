@@ -70,14 +70,15 @@ export function SkillsTab() {
         Technical expertise across multiple domains
       </motion.p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div className="columns-1 md:columns-2 gap-6 space-y-6 mb-12">
         {skillCategories.map((category, categoryIndex) => (
           <motion.div
             key={categoryIndex}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 + categoryIndex * 0.1 }}
-            className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6"
+            whileHover={{ y: -5, boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)" }}
+            className="break-inside-avoid-column mb-6 backdrop-blur-md bg-white/5 border border-white/10 hover:border-cyan-500/50 transition-colors duration-300 rounded-3xl p-6"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center`}>
