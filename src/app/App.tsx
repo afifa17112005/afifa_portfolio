@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Scene3D } from '@/app/components/Scene3D';
 import { HomeTab } from '@/app/components/HomeTab';
@@ -9,6 +9,8 @@ import { SkillsTab } from '@/app/components/SkillsTab';
 import { ContactTab } from '@/app/components/ContactTab';
 import { Footer } from '@/app/components/Footer';
 import { Home, User, Briefcase, Code, Mail } from 'lucide-react';
+
+
 
 const tabs = [
   { id: 'home', label: 'Home', icon: Home, component: HomeTab },
@@ -21,7 +23,30 @@ const tabs = [
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
 
-  const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || HomeTab;
+  const scrollToSection = (id: string) => {
+    setActiveTab(id);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = tabs.map(tab => document.getElementById(tab.id));
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        if (section && section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
+          setActiveTab(section.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen text-white overflow-x-hidden relative selection:bg-blue-500/30">
@@ -40,7 +65,7 @@ export default function App() {
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => scrollToSection(tab.id)}
                 className={`relative px-3 sm:px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 group whitespace-nowrap ${activeTab === tab.id
                   ? 'text-white'
                   : 'text-white/60 hover:text-white'
@@ -66,10 +91,18 @@ export default function App() {
       </motion.nav>
 
       {/* Content */}
-      <main className="relative z-10 pt-32 pb-20">
-        <AnimatePresence mode="wait">
-          <ActiveComponent key={activeTab} />
-        </AnimatePresence>
+      <main className="relative z-10">
+        {tabs.map((tab) => (
+          <section
+            key={tab.id}
+            id={tab.id}
+            className="min-h-screen flex flex-col justify-center py-20 border-b border-white/5 last:border-0"
+          >
+            <div className="container mx-auto px-4">
+              <tab.component />
+            </div>
+          </section>
+        ))}
       </main>
 
       {/* Footer */}
@@ -103,6 +136,10 @@ export default function App() {
         />
       </div>
 
+
+
     </div>
+
+
   );
 }
