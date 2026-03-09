@@ -52,19 +52,6 @@ The portfolio was developed using the following technologies:
 - supabase
 - ai tools
 
----
-
-## 📂 Project Structure
-
-portfolio/
-│
-├── index.html
-├── style.css
-├── script.js
-├── assets/
-│   ├── images/
-│   └── icons/
-└── README.md
 
 ---
 
